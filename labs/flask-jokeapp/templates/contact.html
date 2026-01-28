@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Contact - JokeApp{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-10 mx-auto">
+        <h1 class="mb-5">Contact Us</h1>
+
+        <div class="row">
+            <!-- Contact Form Card -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Send us a Message</h5>
+                        <form class="contact-form-inline">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">Subject</label>
+                                <input type="text" class="form-control" id="subject" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="4" required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Information Card -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Contact Information</h5>
+                        
+                        <div class="contact-info mb-4">
+                            <h6 class="mb-2">📧 Email</h6>
+                            <p class="contact-detail">
+                                <a href="mailto:info@jokeapp.com">info@jokeapp.com</a>
+                            </p>
+                        </div>
+
+                        <div class="contact-info mb-4">
+                            <h6 class="mb-2">💻 GitHub Repository</h6>
+                            <p class="contact-detail">
+                                <a href="https://github.com/yourusername/flask-jokeapp" target="_blank">
+                                    github.com/yourusername/flask-jokeapp
+                                </a>
+                            </p>
+                        </div>
+
+                        <div class="contact-info mb-4">
+                            <h6 class="mb-2">🌐 API Documentation</h6>
+                            <p class="contact-detail">
+                                <a href="https://v2.jokeapi.dev" target="_blank">
+                                    JokeAPI Documentation
+                                </a>
+                            </p>
+                        </div>
+
+                        <div class="contact-info">
+                            <h6 class="mb-2">⏰ Response Time</h6>
+                            <p class="contact-detail">
+                                We typically respond within 24 hours
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Info -->
+        <div class="row mt-4">
+            <div class="col-lg-10 mx-auto">
+                <div class="alert alert-info">
+                    <strong>💡 Tip:</strong> For technical issues or feature requests, please use our GitHub repository to file an issue or submit a pull request.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
