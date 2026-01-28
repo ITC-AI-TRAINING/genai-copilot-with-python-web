@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% block title %}Home - JokeApp{% endblock %} {% block
+content %}
+<div class="hero bg-light p-5 rounded">
+  <h1 class="display-4">{{ welcome_message }}</h1>
+  <p class="lead">
+    Get jokes from JokeAPI - Programming, Miscellaneous, and Dark humor
+  </p>
+  <p>Version: {{ app_version }}</p>
+  <a href="#" class="btn btn-primary btn-lg">Get Started</a>
+</div>
+<div class="row mt-5">
+  <div class="col-md-4 mb-4">
+    <div class="card h-100">
+      <div class="card-body text-center">
+        <i class="bi bi-shuffle display-4 text-primary mb-3"></i>
+        <h5 class="card-title">Random Jokes</h5>
+        <p class="card-text">
+          Get a random joke instantly from various categories.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-4">
+    <div class="card h-100">
+      <div class="card-body text-center">
+        <i class="bi bi-tags display-4 text-success mb-3"></i>
+        <h5 class="card-title">Category Selection</h5>
+        <p class="card-text">
+          Choose from programming, miscellaneous, or dark humor.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-4">
+    <div class="card h-100">
+      <div class="card-body text-center">
+        <i class="bi bi-funnel display-4 text-warning mb-3"></i>
+        <h5 class="card-title">Custom Filters</h5>
+        <p class="card-text">
+          Apply filters to find jokes that match your preferences.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
