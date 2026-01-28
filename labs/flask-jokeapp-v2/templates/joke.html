@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block title %}Joke - JokeApp{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <!-- Error Handling -->
+        {% if not joke_data.success %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h5 class="alert-heading">❌ Oops! Something went wrong</h5>
+            <p class="mb-0">{{ joke_data.error }}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+        <div class="text-center mt-4">
+            <p class="text-muted mb-3">Try fetching a joke from a different category:</p>
+            <div class="btn-group" role="group">
+                <a href="{{ url_for('get_random_joke') }}" class="btn btn-primary">Random Joke</a>
+                <a href="{{ url_for('get_joke_by_category', category='Programming') }}" class="btn btn-outline-primary">Programming</a>
+                <a href="{{ url_for('get_joke_by_category', category='Miscellaneous') }}" class="btn btn-outline-primary">Miscellaneous</a>
+                <a href="{{ url_for('get_joke_by_category', category='Dark') }}" class="btn btn-outline-primary">Dark</a>
+            </div>
+        </div>
+        {% else %}
+        <!-- Joke Display -->
+        <div class="card joke-card mb-4">
+            <div class="card-body">
+                <div class="joke-category-badge mb-3">
+                    <span class="badge bg-primary">{{ joke_data.category }}</span>
+                </div>
+
+                {% if joke_data.joke_type == 'single' %}
+                <!-- Single Joke -->
+                <div class="joke-content">
+                    <p class="joke-text">{{ joke_data.joke }}</p>
+                </div>
+                {% else %}
+                <!-- Two-Part Joke -->
+                <div class="joke-content">
+                    <div class="setup mb-4">
+                        <p class="joke-setup">{{ joke_data.setup }}</p>
+                    </div>
+                    <button class="btn btn-success btn-sm mb-3" id="revealBtn" onclick="revealDelivery()">
+                        Reveal Answer
+                    </button>
+                    <div class="delivery" id="delivery" style="display: none;">
+                        <div class="divider my-3"></div>
+                        <p class="joke-delivery">{{ joke_data.delivery }}</p>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Joke Metadata -->
+                <div class="joke-metadata mt-4 pt-3 border-top">
+                    <small class="text-muted">
+                        <span class="me-3">📝 Type: <strong>{{ joke_data.joke_type|capitalize }}</strong></span>
+                        <span>✅ Safe: <strong>{% if joke_data.success %}Yes{% endif %}</strong></span>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <a href="{{ url_for('get_random_joke') }}" class="btn btn-primary w-100 mb-2">
+                    🎲 Get Random Joke
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a href="{{ url_for('home') }}" class="btn btn-outline-primary w-100 mb-2">
+                    🏠 Back to Home
+                </a>
+            </div>
+        </div>
+
+        <!-- Category Quick Links -->
+        <div class="mt-5 pt-4 border-top">
+            <h6 class="mb-3">📚 Browse by Category:</h6>
+            <div class="row">
+                <div class="col-md-4 mb-2">
+                    <a href="{{ url_for('get_joke_by_category', category='Programming') }}" class="btn btn-outline-secondary w-100 btn-sm">
+                        💻 Programming
+                    </a>
+                </div>
+                <div class="col-md-4 mb-2">
+                    <a href="{{ url_for('get_joke_by_category', category='Miscellaneous') }}" class="btn btn-outline-secondary w-100 btn-sm">
+                        🎭 Miscellaneous
+                    </a>
+                </div>
+                <div class="col-md-4 mb-2">
+                    <a href="{{ url_for('get_joke_by_category', category='Dark') }}" class="btn btn-outline-secondary w-100 btn-sm">
+                        🖤 Dark Humor
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+function revealDelivery() {
+    const delivery = document.getElementById('delivery');
+    const button = document.getElementById('revealBtn');
+    
+    if (delivery.style.display === 'none') {
+        delivery.style.display = 'block';
+        button.textContent = '🙈 Hide Answer';
+    } else {
+        delivery.style.display = 'none';
+        button.textContent = '👀 Reveal Answer';
+    }
+}
+</script>
+
+<style>
+.joke-card {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 8px;
+}
+
+.joke-text {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #212529;
+    font-weight: 500;
+    margin: 1.5rem 0;
+}
+
+.joke-setup {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #495057;
+    font-weight: 500;
+}
+
+.joke-delivery {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #28a745;
+    font-weight: 600;
+    margin: 1rem 0;
+}
+
+.joke-category-badge {
+    display: inline-block;
+}
+
+.divider {
+    border-bottom: 2px dashed #dee2e6;
+}
+
+.joke-metadata {
+    font-size: 0.9rem;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}About - JokeApp{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-10 mx-auto">
+        <!-- Project Description -->
+        <h1 class="mb-4">About JokeApp</h1>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Project Overview</h5>
+                <p class="card-text">
+                    JokeApp is a modern, interactive web application built with Flask that brings laughter and entertainment to your fingertips. 
+                    Our application leverages the powerful JokeAPI to deliver a diverse collection of jokes across multiple categories including Programming, 
+                    Miscellaneous, and Dark humor. Whether you're looking for a quick laugh during a coding session or need a mood booster, JokeApp has you covered!
+                </p>
+            </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">🛠️ Technology Stack</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <strong>Backend:</strong> Python 3 with Flask
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Frontend:</strong> HTML5, CSS3, JavaScript
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Styling:</strong> Bootstrap 5
+                            </li>
+                            <li class="list-group-item">
+                                <strong>API:</strong> JokeAPI v2
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">✨ Key Features</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <span class="badge bg-primary">Feature</span> Random joke generation
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge bg-primary">Feature</span> Multiple joke categories
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge bg-primary">Feature</span> Responsive design
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge bg-primary">Feature</span> User-friendly interface
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GitHub Copilot Section -->
+        <div class="card bg-light mb-4">
+            <div class="card-body">
+                <h5 class="card-title">🤖 Built with GitHub Copilot</h5>
+                <p class="card-text">
+                    JokeApp was built using <strong>GitHub Copilot</strong>, an AI-powered coding assistant that significantly accelerated the development process. 
+                    GitHub Copilot helped us:
+                </p>
+                <ul class="list-group list-group-flush bg-light">
+                    <li class="list-group-item bg-light">
+                        Generate boilerplate Flask application code quickly and efficiently
+                    </li>
+                    <li class="list-group-item bg-light">
+                        Create responsive HTML templates with Bootstrap styling
+                    </li>
+                    <li class="list-group-item bg-light">
+                        Write clean, well-documented Python functions with proper docstrings
+                    </li>
+                    <li class="list-group-item bg-light">
+                        Implement CSS styling for beautiful UI/UX design
+                    </li>
+                    <li class="list-group-item bg-light">
+                        Follow best practices and modern web development patterns
+                    </li>
+                </ul>
+                <p class="card-text mt-3">
+                    This project demonstrates how AI-assisted development can improve productivity while maintaining code quality and best practices.
+                </p>
+            </div>
+        </div>
+
+        <!-- Project Stats -->
+        <div class="row mb-4">
+            <div class="col-md-3 text-center">
+                <h3 class="text-primary">4</h3>
+                <p class="text-muted">Pages</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <h3 class="text-primary">3+</h3>
+                <p class="text-muted">Joke Categories</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <h3 class="text-primary">100%</h3>
+                <p class="text-muted">Responsive</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <h3 class="text-primary">Fast</h3>
+                <p class="text-muted">Performance</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

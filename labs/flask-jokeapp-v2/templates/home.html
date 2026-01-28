@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}Home - JokeApp{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="hero-section mb-5">
+    <div class="row">
+        <div class="col-lg-10 mx-auto text-center">
+            <h1 class="hero-title display-3 fw-bold mb-3">Welcome to JokeApp</h1>
+            <p class="hero-subtitle lead mb-4">
+                {{ welcome_message }}
+            </p>
+            <button class="btn btn-primary btn-lg px-5" id="getStartedBtn">Get Started</button>
+            <p class="text-white-50 mt-3" style="font-size: 0.9rem;">Version {{ app_version }}</p>
+        </div>
+    </div>
+</div>
+
+<!-- Features Cards Section -->
+<div class="row mt-5 mb-5">
+    <div class="col-md-4 mb-3">
+        <div class="card feature-card h-100">
+            <div class="card-body text-center">
+                <div class="feature-icon mb-3">😂</div>
+                <h5 class="card-title">Random Jokes</h5>
+                <p class="card-text">Get random jokes from our extensive collection with a single click.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card feature-card h-100">
+            <div class="card-body text-center">
+                <div class="feature-icon mb-3">🏷️</div>
+                <h5 class="card-title">Category Selection</h5>
+                <p class="card-text">Choose from Programming, Miscellaneous, and Dark humor categories.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card feature-card h-100">
+            <div class="card-body text-center">
+                <div class="feature-icon mb-3">⚙️</div>
+                <h5 class="card-title">Custom Filters</h5>
+                <p class="card-text">Filter jokes by your preferences and customize your experience.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Jokes Container -->
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div id="jokeContainer" style="display:none;">
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <p id="jokeText" class="mb-0"></p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div class="text-center mt-3">
+                <button class="btn btn-primary" id="jokeBtn">Get Another Joke</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Category Selection Form -->
+<div class="row mt-5 mb-5">
+    <div class="col-lg-8 mx-auto">
+        <div class="card category-form-card">
+            <div class="card-body p-5">
+                <h3 class="card-title text-center mb-4">🎭 Choose Your Joke Category</h3>
+                
+                <form id="categoryForm" class="category-form">
+                    <div class="mb-4">
+                        <label for="categorySelect" class="form-label fw-bold">Select a category:</label>
+                        <select class="form-select form-select-lg" id="categorySelect" required>
+                            <option value="" disabled selected>-- Select a category --</option>
+                            <option value="Any">🎲 Any (Random)</option>
+                            <option value="Programming">💻 Programming</option>
+                            <option value="Miscellaneous">🎭 Miscellaneous</option>
+                            <option value="Dark">🖤 Dark Humor</option>
+                            <option value="Pun">🎪 Pun</option>
+                            <option value="Spooky">👻 Spooky</option>
+                            <option value="Christmas">🎄 Christmas</option>
+                        </select>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            ➜ Get Joke
+                        </button>
+                    </div>
+                </form>
+                
+                <p class="text-muted text-center mt-4 mb-0">
+                    <small>Select a category and click "Get Joke" to see a hilarious joke!</small>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('getStartedBtn').addEventListener('click', function() {
+        document.getElementById('jokeContainer').style.display = 'block';
+        document.getElementById('jokeText').textContent = 'Why did the programmer quit his job? Because he didn\'t get arrays!';
+    });
+
+    document.getElementById('jokeBtn').addEventListener('click', function() {
+        document.getElementById('jokeText').textContent = 'Why do programmers prefer dark mode? Because light attracts bugs!';
+    });
+
+    // Handle category form submission
+    document.getElementById('categoryForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const category = document.getElementById('categorySelect').value;
+        
+        if (category) {
+            // Redirect to /joke/<category> route
+            window.location.href = '/joke/' + category;
+        }
+    });
+</script>
+{% endblock %}

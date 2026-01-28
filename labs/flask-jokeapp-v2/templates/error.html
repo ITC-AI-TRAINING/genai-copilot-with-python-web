@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}Error - JokeApp{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="error-container text-center py-5">
+            <!-- Error Emoji -->
+            <div class="error-emoji mb-4">
+                😕
+            </div>
+
+            <!-- Error Heading -->
+            <h1 class="error-title mb-3">Oops! Something went wrong</h1>
+
+            <!-- Error Alert -->
+            <div class="alert alert-warning alert-dismissible fade show mb-4" role="alert">
+                <h5 class="alert-heading">⚠️ Error</h5>
+                <p class="mb-0">{{ error_message }}</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <!-- Additional Help Text -->
+            <p class="text-muted mb-4">
+                We encountered an issue while processing your request. Please try again or contact us if the problem persists.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="row g-2 justify-content-center">
+                <div class="col-md-3">
+                    <a href="{{ url_for('home') }}" class="btn btn-primary w-100">
+                        🏠 Go Home
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="{{ url_for('get_random_joke') }}" class="btn btn-outline-primary w-100">
+                        🎲 Get Joke
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="{{ url_for('contact') }}" class="btn btn-outline-secondary w-100">
+                        💬 Contact
+                    </a>
+                </div>
+            </div>
+
+            <!-- Error Code (if provided) -->
+            {% if error_code %}
+            <p class="text-muted mt-4" style="font-size: 0.85rem;">
+                <small>Error Code: <code>{{ error_code }}</code></small>
+            </p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+.error-container {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-emoji {
+    font-size: 5rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.error-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #212529;
+}
+
+.alert-warning {
+    text-align: left;
+    font-size: 1.05rem;
+    background-color: #fff3cd;
+    border: 2px solid #ffc107;
+}
+
+.alert-warning .alert-heading {
+    color: #856404;
+    font-weight: 600;
+}
+
+@media (max-width: 576px) {
+    .error-emoji {
+        font-size: 3.5rem;
+    }
+
+    .error-title {
+        font-size: 1.5rem;
+    }
+
+    .col-md-3 {
+        min-width: 100%;
+    }
+}
+</style>
+{% endblock %}
